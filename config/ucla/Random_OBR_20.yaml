@@ -1,0 +1,67 @@
+# feeder
+#在 NW-UCLA 上使用骨骼或运动模态训练模型，
+
+work_dir: ./work_dir/UCLA_EAP/OBR20/SoR
+
+phase: train
+debug: False
+ob_ratio: 20
+# processor
+processor: processor.processor_ucla.Processor
+# feeder
+feeder: feeders.feeder_ucla.Feeder
+train_feeder_args:
+  data_path: joint
+  label_path: train
+  random_choose: True
+  random_shift: False
+  random_move: False
+  window_size: 64
+  normalization: False
+  repeat: 5
+
+test_feeder_args:
+  data_path: joint
+  label_path: val
+  window_size: 64
+  repeat: 1
+
+
+data_frame: 64
+
+# model
+model:
+  encoder: model.SoRgcn.Model
+  dcls: model.d_cls_single.class_discriminator
+encoder_args:
+  num_class: 10
+  num_point: 20
+  num_person: 1
+  graph: graph.ucla.Graph
+  graph_args:
+    labeling_mode: 'spatial'
+
+dcls_args:
+  num_class: 10
+
+#optim
+weight_decay: 0.0004
+base_lr: 0.1
+lr_decay_rate: 0.1
+step: [ 35,65,90 ]
+warm_up_epoch: 5
+
+# training
+device: [ 0,1 ]
+batch_size: 64
+test_batch_size: 64
+num_epoch: 100
+nesterov: True
+save_interval: 5
+eval_interval: 10
+data_random_ob: False
+Detailed_test_epoch: 35
+
+#data processing
+train_fill_type: zero
+test_fill_type: zero
