@@ -21,7 +21,7 @@ test_feeder_args:
     ]
   label_path: ./data/NTU-RGB-D/xsub/val/val_label.pkl
 
-data_frame: 100
+data_frame: 64
 # model
 model:
   encoder: model.SoRgcn.Model
