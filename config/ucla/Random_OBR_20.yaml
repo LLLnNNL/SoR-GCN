@@ -16,18 +16,18 @@ train_feeder_args:
   random_choose: True
   random_shift: False
   random_move: False
-  window_size: 64
+  window_size: 52
   normalization: False
   repeat: 5
 
 test_feeder_args:
   data_path: joint
   label_path: val
-  window_size: 64
+  window_size: 52
   repeat: 1
 
 
-data_frame: 64
+data_frame: 52
 
 # model
 model:

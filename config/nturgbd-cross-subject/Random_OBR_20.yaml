@@ -10,18 +10,18 @@ feeder: feeders.feeder.Feeder
 train_feeder_args:
   data_path:
     [
-      ./data/NTU-RGB-D/xsub/train/train_100_data_joint.npy
+
     ]
-  label_path: ./data/NTU-RGB-D/xsub/train/train_label.pkl
+  label_path:
 
 test_feeder_args:
   data_path:
     [
-      ./data/NTU-RGB-D/xsub/val/val_100_data_joint.npy
-    ]
-  label_path: ./data/NTU-RGB-D/xsub/val/val_label.pkl
 
-data_frame: 100
+    ]
+  label_path:
+
+data_frame: 64
 # model
 model:
   encoder: model.SoRgcn.Model
